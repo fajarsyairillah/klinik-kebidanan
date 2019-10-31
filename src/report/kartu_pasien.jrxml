@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="499" pageHeight="300" columnWidth="459" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94ed5022-ae19-417d-95e9-aac0c8f42046">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="kode_pasien" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{pasien_no_rm}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pasien.`no_rm` AS pasien_no_rm,
+     pasien.`nama` AS pasien_nama,
+     pasien.`tgl` AS pasien_tgl
+FROM
+     `pasien` pasien
+WHERE
+     pasien.no_rm = $P{kode_pasien}]]>
+	</queryString>
+	<field name="pasien_no_rm" class="java.lang.String"/>
+	<field name="pasien_nama" class="java.lang.String"/>
+	<field name="pasien_tgl" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="-24" width="499" height="95" forecolor="#FFFFFF" backcolor="#0099FF" uuid="235ae04d-f37e-4e03-a2cc-19e4f797f473"/>
+				<staticText>
+					<reportElement style="Title" x="10" y="11" width="133" height="35" uuid="8466eb1a-3711-47db-88f2-435ad49b1fab"/>
+					<textElement>
+						<font size="22" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Kartu Pasien]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="84" y="70" width="351" height="15" forecolor="#FFFFFF" uuid="61d1fbc5-ce71-4fd3-abac-93311d60e91f"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Jl.Murai III Blok A6/10 RT.02 RW.10 Cileungsi Kabupaten Bogor 16820]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="143" y="46" width="209" height="24" forecolor="#FFFFFF" uuid="057ba735-f0c9-420d-91b9-543b64f049ee"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BIDAN TATIK DWI YANI.S.Si.T.MKM]]></text>
+				</staticText>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement x="415" y="0" width="84" height="65" uuid="c2bcfe00-b692-4a24-87b5-92521a31d27b"/>
+					<imageExpression><![CDATA["C:\\Users\\ADITYA PUTRA\\Desktop\\klinikkebidanan\\src\\gambar\\bidan_logo.jpg"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="71" width="499" height="37" forecolor="#000000" backcolor="#0066FF" uuid="89cfaf75-c8fb-4ece-b616-fcf5e8b7b925"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="337" y="17" width="144" height="20" forecolor="#FFFFFF" uuid="fed9505e-a675-4ffb-8217-2588f79f7786"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="77" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="460" height="18" uuid="516b86c4-6831-48b5-8745-3f8aa4cd364b"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="204" height="18" uuid="618851f6-b164-40e2-860e-de3179caa646"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pasien_no_rm}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="0" y="29" width="233" height="18" uuid="3f975955-e4d9-47c0-b98d-21debf606ddb"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasien_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="57" width="233" height="20" uuid="6aeae6e5-ebb6-4995-ad37-7377b5307f8d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasien_tgl}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="435574ac-288f-437f-a041-0c7eddc4a099"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="52" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="0" width="499" height="50" forecolor="#FFFFFF" backcolor="#0099FF" uuid="6381c4d0-282f-41f2-933a-52d79bd58253"/>
+				<staticText>
+					<reportElement x="121" y="10" width="254" height="20" forecolor="#FFFFFF" uuid="2790952d-ceef-4967-a136-b99ef5ebdd2e"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA["Bidan Tatik Dwi Yani Melayani Bersama"]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="121" y="30" width="250" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="470e5458-d0eb-41ae-acb0-de2d609f0c1a"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Kartu Harap Dibawa Setiap Berobat]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

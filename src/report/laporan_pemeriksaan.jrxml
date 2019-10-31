@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan_pemeriksaan" language="groovy" pageWidth="980" pageHeight="595" orientation="Landscape" columnWidth="940" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ded8dc7-8457-4a29-944a-2ee4468669c8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="tgl1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tgl2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     periksa.`no_rm` AS periksa_no_rm,
+     periksa.`nama` AS periksa_nama,
+     periksa.`nama_tindakan` AS periksa_nama_tindakan,
+     periksa.`ruang_bersalin` AS periksa_ruang_bersalin,
+     periksa.`harga_ruang` AS periksa_harga_ruang,
+     periksa.`keadaan_bayi` AS periksa_keadaan_bayi,
+     periksa.`jenkel_bayi` AS periksa_jenkel_bayi,
+     periksa.`nama_periksa` AS periksa_nama_periksa,
+     periksa.`diagnosa` AS periksa_diagnosa,
+     periksa.`daftar_obat` AS periksa_daftar_obat,
+     periksa.`tanggal` AS periksa_tanggal,
+     periksa.`jam` AS periksa_jam,
+     periksa.`no_periksa` AS periksa_no_periksa
+FROM
+     `periksa` periksa
+WHERE
+periksa.tanggal BETWEEN $P{tgl1} AND $P{tgl2}]]>
+	</queryString>
+	<field name="periksa_no_periksa" class="java.lang.String"/>
+	<field name="periksa_no_rm" class="java.lang.String"/>
+	<field name="periksa_nama" class="java.lang.String"/>
+	<field name="periksa_nama_tindakan" class="java.lang.String"/>
+	<field name="periksa_ruang_bersalin" class="java.lang.String"/>
+	<field name="periksa_harga_ruang" class="java.lang.String"/>
+	<field name="periksa_keadaan_bayi" class="java.lang.String"/>
+	<field name="periksa_jenkel_bayi" class="java.lang.String"/>
+	<field name="periksa_nama_periksa" class="java.lang.String"/>
+	<field name="periksa_diagnosa" class="java.lang.String"/>
+	<field name="periksa_daftar_obat" class="java.lang.String"/>
+	<field name="periksa_tanggal" class="java.lang.String"/>
+	<field name="periksa_jam" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="0" width="981" height="66" backcolor="#0099FF" uuid="b7da555c-c786-45a7-87d1-e7c81ce3475e"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="505" height="66" uuid="510d1af4-be80-46cd-9bbc-6c5c5ab17082"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Laporan Pemeriksaan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="508" y="10" width="310" height="24" forecolor="#FFFFFF" uuid="595a74e4-ba61-4ae7-ae4f-723715b913f2"/>
+					<textElement>
+						<font size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BIDAN TATIK DWI YANI.S.Si.T.MKM]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="493" y="51" width="351" height="15" forecolor="#FFFFFF" uuid="02e94870-6053-4505-a65b-637cfdc58753"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Jl.Murai III Blok A6/10 RT.02 RW.10 Cileungsi Kabupaten Bogor 16820]]></text>
+				</staticText>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement x="844" y="0" width="137" height="66" uuid="734f409b-bb68-42fa-87ae-c3bf4907c0ed"/>
+					<imageExpression><![CDATA["C:\\Users\\ADITYA PUTRA\\Desktop\\klinikkebidanan\\src\\gambar\\bidan_logo.jpg"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="66" width="981" height="32" forecolor="#000000" backcolor="#0066FF" uuid="8521b41d-0d66-4c05-bfa5-d90e207aa5fe"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="835" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="b5600064-569a-44e7-88ca-6dfacbb4d647"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="55" y="0" width="66" height="18" forecolor="#000000" uuid="62b9beab-dda0-47f7-a70b-d80a666eddbd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="121" y="0" width="61" height="18" forecolor="#000000" uuid="3d922957-0a46-40c4-8c77-e4107905e83a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="182" y="0" width="82" height="18" forecolor="#000000" uuid="7c14f1c3-d4d8-4555-a365-425b7895500d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tindakan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="0" width="66" height="18" forecolor="#000000" uuid="25323c4f-b20d-4053-9bac-79aa96cb7b4b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lama Menginap]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="325" y="0" width="66" height="18" forecolor="#000000" uuid="c6c9abbb-9e4e-4d77-b4ee-a32c90edd9c7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Harga Ruangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="391" y="0" width="93" height="18" forecolor="#000000" uuid="8946d396-232b-475b-9c66-ec1e63c0f576"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Keadaan Bayi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="484" y="0" width="88" height="18" forecolor="#000000" uuid="a33d157d-861f-4a07-ac1e-0d65add32b01"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="574" y="0" width="66" height="18" forecolor="#000000" uuid="d4fa2b8d-b7dd-43f2-b9cf-9596fcd9b310"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bidan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="640" y="0" width="66" height="18" forecolor="#000000" uuid="e0dccbc1-6844-4525-8c35-65e6811fbf22"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnosa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="706" y="0" width="86" height="18" forecolor="#000000" uuid="ac719c48-c0d1-4a01-bec1-ee373cb6e279"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Daftar Obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="797" y="0" width="88" height="18" forecolor="#000000" uuid="a8badb34-aaba-412e-b4d8-e96bf38edce4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="892" y="0" width="66" height="18" forecolor="#000000" uuid="58d99c01-bd7d-466b-97db-32f0249085ad"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="-21" y="0" width="76" height="18" forecolor="#000000" uuid="7ea9fb0d-6371-4b5e-b18d-cf6691a5b7af"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Periksa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="-21" y="0" width="979" height="18" uuid="382ca671-eb74-4a22-9645-68dcfb83a506"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="76" y="0" width="56" height="18" uuid="8acaf0db-7e31-4206-8147-f53682a7a21f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_no_rm}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="132" y="0" width="71" height="18" uuid="7b78a8d8-5a34-47b6-ad6e-e809fcc74367"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_nama}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="203" y="0" width="77" height="18" uuid="ef6f1ab1-aab2-4524-98c7-efb92c0db375"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_nama_tindakan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="280" y="0" width="66" height="18" uuid="5350edfa-675b-40a8-95ea-f62984e1c38a"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_ruang_bersalin}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="351" y="0" width="66" height="18" uuid="664cdfd8-03e7-44fe-ac8c-2e9d193c2631"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_harga_ruang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="412" y="0" width="93" height="18" uuid="f6804b45-99fb-4602-8108-3ef33b0befde"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_keadaan_bayi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="505" y="0" width="88" height="18" uuid="910ed8ab-19d3-4132-9f4b-0580cccd51d2"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_jenkel_bayi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="593" y="0" width="68" height="18" uuid="67ea1167-25ba-41a5-a74b-fbb5d53d354c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_nama_periksa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="666" y="0" width="66" height="18" uuid="33fa7ee2-3879-4edb-88e8-cf6c0fbb64ce"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_diagnosa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="732" y="0" width="86" height="18" uuid="5ab0104b-580c-446d-bc44-4b816c42e2aa"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_daftar_obat}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="76" height="18" uuid="3ded622e-b879-4450-9a0e-99e161682506"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{periksa_no_periksa}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="892" y="0" width="66" height="18" uuid="6ef64032-2298-41d9-ae11-629817ca135d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periksa_jam}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" positionType="Float" x="797" y="0" width="88" height="18" uuid="32f1880e-e6f7-4c21-ad95-9d93339fa5c6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periksa_tanggal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="99075139-1ba9-4c12-acae-9a6424606bf1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="0" width="981" height="25" forecolor="#FFFFFF" backcolor="#0099FF" uuid="39fe02aa-0e32-490e-83db-567a319c76f1"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="939" y="5" width="40" height="20" forecolor="#FFFFFF" uuid="c23db8b8-adf0-4688-bf40-98769fc3aea7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="859" y="5" width="80" height="20" forecolor="#FFFFFF" uuid="71181641-62b6-4369-958f-1753610e6011"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="320" y="5" width="240" height="20" forecolor="#FFFFFF" uuid="bf429939-56e6-4726-bd09-1ab89a8fbe89"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA["Bidan Tatik Dwi Yani Melayani Bersama"]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
